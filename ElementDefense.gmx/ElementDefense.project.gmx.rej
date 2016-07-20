@@ -1,0 +1,9 @@
+diff a/GameMaking.gmx/GameMaking.project.gmx b/GameMaking.gmx/GameMaking.project.gmx	(rejected hunks)
+@@ -124,6 +124,7 @@
+         <sprite>sprites\spr_tree_green</sprite>
+         <sprite>sprites\spr_tree_dark_green</sprite>
+         <sprite>sprites\spr_tree_emerald</sprite>
++        <sprite>sprites\spr_tree_purple</sprite>
+       </sprites>
+       <sprites name="forest">
+         <sprite>sprites\spr_forest_orange</sprite>
