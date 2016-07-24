@@ -90,8 +90,18 @@
       <sprite>sprites\spr_msg_instruction1</sprite>
       <sprite>sprites\spr_msg_instruction2</sprite>
     </sprites>
+    <sprites name="inventory">
+      <sprite>sprites\spr_inv_side</sprite>
+      <sprite>sprites\spr_inv_center</sprite>
+    </sprites>
+    <sprite>sprites\spr_wall</sprite>
+    <sprite>sprites\spr_combine_effect</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+    <background>background\background2</background>
+    <background>background\background4</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_get_input.gml</script>
@@ -102,6 +112,8 @@
     <object>objects\obj_master</object>
     <object>objects\obj_collide_parent</object>
     <object>objects\obj_lifeform_parent</object>
+    <object>objects\obj_inv_slot_parent</object>
+    <object>objects\obj_inv_combine_effect</object>
     <object>objects\obj_player</object>
     <objects name="Elements">
       <object>objects\obj_ele_fire</object>
@@ -125,6 +137,7 @@
       <object>objects\obj_build_area</object>
       <object>objects\obj_attack_area</object>
       <object>objects\obj_enemy_spwn</object>
+      <object>objects\obj_wall</object>
     </objects>
     <objects name="Towers">
       <object>objects\obj_tower_parent</object>
@@ -157,8 +170,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
-    <room>rooms\room1</room>
+    <room>rooms\room_world</room>
+    <room>rooms\room_dungeon</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
