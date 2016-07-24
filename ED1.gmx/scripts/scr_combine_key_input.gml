@@ -54,13 +54,20 @@ if (keyboard_check_pressed(ord("Q"))){
         break;
     }
   }
-  created = global.mat_selected[irandom_range(0, 2)];
+  global.created = global.mat_selected[irandom_range(0, 2)];
   global.mat_selected[0] = 0;
   global.mat_selected[1] = 0;
   global.mat_selected[2] = 0;
   global.selected = 0;
-  show_debug_message("created tower index = " + string(created));
-  switch(created){
+  show_debug_message("created tower index = " + string(global.created));
+  
+  // combine effect
+  with(obj_inv_combine_effect)
+    instance_destroy()
+  inst = instance_create(32 * 16, 1568 + 64, obj_inv_combine_effect)
+  inst.depth = 1
+  
+  switch(global.created){
     case 1:
       global.tower_fire += 1;
       break;

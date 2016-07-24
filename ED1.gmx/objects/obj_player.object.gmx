@@ -199,6 +199,13 @@ if (w_key &amp;&amp; room == 1){
   }
 }
 
+if room == 0
+    view_vborder[0] = min(1536 - phy_position_y, 512)
+if room == 1 {
+    view_vborder[0] = min(608 - phy_position_y, 512)
+    view_hborder[0] = min(992 - phy_position_x, 512)
+}
+
 //show_debug_message("fire = " + string(global.mat_fire));
 //show_debug_message("wind = " + string(global.mat_wind));
 //show_debug_message("thunder = " + string(global.mat_thunder));
