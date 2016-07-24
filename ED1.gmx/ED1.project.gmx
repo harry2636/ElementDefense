@@ -83,12 +83,17 @@
     <sprites name="Bullets">
       <sprite>sprites\spr_bullet_fire</sprite>
       <sprite>sprites\spr_bullet_wind</sprite>
-      <sprite>sprites\spr_bullet_thunder</sprite>
       <sprite>sprites\spr_bullet_ice</sprite>
+      <sprite>sprites\spr_bullet_thunder3</sprite>
+      <sprite>sprites\spr_bullet_thunder4</sprite>
+      <sprite>sprites\spr_effect_thunder</sprite>
     </sprites>
     <sprites name="Messages">
       <sprite>sprites\spr_msg_instruction1</sprite>
       <sprite>sprites\spr_msg_instruction2</sprite>
+    </sprites>
+    <sprites name="Effects">
+      <sprite>sprites\spr_effect_thunder1</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -154,6 +159,9 @@
       <object>objects\obj_msg_instruction1</object>
       <object>objects\obj_msg_instruction2</object>
       <object>objects\obj_timer</object>
+    </objects>
+    <objects name="Effects">
+      <object>objects\obj_effect_thunder</object>
     </objects>
   </objects>
   <rooms name="rooms">

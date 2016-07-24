@@ -98,31 +98,31 @@ switch(lvl){
   case 1:
     dmg = 10;
     atk_spd = 10;
-    proj_spd = 7;
+    proj_spd = 5;
     break;
   case 2:
     dmg = 15;
     atk_spd = 20;
-    proj_spd = 8;
+    proj_spd = 5;
     break;
   case 3:
     dmg = 20;
     atk_spd = 30;
-    proj_spd = 9;
+    proj_spd = 5;
     break;
   case 4:
     dmg = 25;
     atk_spd = 40;
-    proj_spd = 10;
+    proj_spd = 5;
     break;
   case 5:
     dmg = 30;
     atk_spd = 50;
-    proj_spd = 10;
+    proj_spd = 5;
     break;
   case 6:
-    dmg = 40;
-    atk_spd = 60;
+    dmg = 10;
+    atk_spd = 70; //max speed
     proj_spd = 10;
     break;
 }

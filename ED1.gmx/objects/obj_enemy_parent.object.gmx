@@ -50,6 +50,13 @@ hp_gage.max_hp = max_hp;
 hp_gage.current_hp = current_hp;
 hp_gage.visible = false;
 timer = 0;
+
+//effect
+fx_thunder_timer = 0;
+fx_ice_timer = 0;
+thunder_effect = instance_create(phy_position_x, phy_position_y, obj_effect_thunder);
+thunder_effect.image_speed = 0.3;
+thunder_effect.visible = false;
 </string>
           </argument>
         </arguments>
@@ -75,6 +82,16 @@ timer = 0;
             <string>///Destroyed
 
 show_debug_message("Enemy Destroyed");
+
+with(my_target){
+  instance_destroy();
+}
+with(hp_gage){
+  instance_destroy();
+}
+with(thunder_effect){
+  instance_destroy();
+}
 global.num_killed += 1;
 </string>
           </argument>
@@ -191,28 +208,40 @@ switch (udlr_dir)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (timer &gt; 0)
+            <string>if (timer &gt; 0){
   timer -= 1;
-draw_self();
-hp_gage.x = phy_position_x;
-hp_gage.y = phy_position_y-21;
-if (timer &gt; 0){
-  hp_gage.current_hp = current_hp;
-  hp_gage.visible = true;
 }
-if(current_hp &lt;= 0){
-  with (hp_gage){
-    instance_destroy();
-  }
-  with(my_target){
-    instance_destroy();
-  }
-  instance_destroy();
-}
-if(timer &lt;= 0){
-  hp_gage.visible = false;
+if (fx_thunder_timer &gt; 0){
+  fx_thunder_timer -= 1;
 }
 
+draw_self();
+if (instance_exists(hp_gage)){
+  hp_gage.x = phy_position_x;
+  hp_gage.y = phy_position_y-21;
+  if (timer &gt; 0){
+    hp_gage.current_hp = current_hp;
+    hp_gage.visible = true;
+  }
+  else{
+    hp_gage.visible = false;
+  }
+}
+
+if (instance_exists(thunder_effect)){
+  thunder_effect.x = phy_position_x;
+  thunder_effect.y = phy_position_y;
+  if (fx_thunder_timer &gt; 0){
+    thunder_effect.visible = true;
+  }
+  else{
+    thunder_effect.visible = false;
+  }
+}
+
+if(current_hp &lt;= 0){
+  instance_destroy();
+}
 </string>
           </argument>
         </arguments>

@@ -58,16 +58,24 @@ event_user(0);
           <argument>
             <kind>1</kind>
             <string>/// Attack
-
-timer = (timer + 1) % (70 - atk_spd);
+if (atk_spd &gt;= 70){
+  timer = 0;
+}
+else{
+  timer = (timer + 1) % (70 - atk_spd);
+}
 if (timer == 0 &amp;&amp; instance_exists(obj_enemy_parent))
 {
     nearest_enemy = instance_nearest(phy_position_x, phy_position_y, obj_enemy_parent);
     if (point_distance(x, y, nearest_enemy.phy_position_x, nearest_enemy.phy_position_y) &lt; 150){
         bullet = instance_create(phy_position_x, phy_position_y, bullet_object);
+        bullet.lvl = lvl;
         bullet.type = type;
         bullet.dmg = dmg;
         bullet.proj_spd = proj_spd;
+        with(bullet){
+          event_user(0);
+        }
         bullet.target = nearest_enemy;
     }
 }

@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///Create Bullet
 
+lvl = 1;
 dmg = 0;
 type = 0;
 proj_spd = 0;
@@ -65,6 +66,9 @@ target = -1;
       x -= dx;
       y -= dy;
       if (place_meeting(x,y,target)){
+        if (lvl == 6 &amp;&amp; type == 3){
+          target.fx_thunder_timer = 10;
+        }
         instance_destroy();
         target.current_hp -= dmg;
         target.timer = 90;
