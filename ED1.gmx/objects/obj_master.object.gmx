@@ -301,6 +301,10 @@ switch(state){
     break;
   case "defend":
     if (global.num_killed &gt;= global.num_enemies){
+      if (global.level = 20){
+        show_message("You WON!");
+        game_restart();
+      }
       global.num_killed_by_tower = global.num_killed - global.num_suicide_enemies;
       global.tower_wall += global.num_killed_by_tower;
       global.level += 1;
