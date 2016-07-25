@@ -186,6 +186,7 @@
       <object>objects\obj_msg_instruction1</object>
       <object>objects\obj_msg_instruction2</object>
       <object>objects\obj_timer</object>
+      <object>objects\obj_topbar</object>
     </objects>
     <objects name="Effects">
       <object>objects\obj_effect_thunder</object>

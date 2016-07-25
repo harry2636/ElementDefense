@@ -387,6 +387,7 @@ inst = instance_create(32 * 15 - 19, inventory_y + 96, obj_inv_slot_parent);
 inst.sprite_index = spr_inv_side
 inst.slot_number = 9
 
+instance_create(0, 0, obj_topbar)
 </string>
           </argument>
         </arguments>
