@@ -11,6 +11,10 @@
       <sprite>sprites\spr_player_left</sprite>
       <sprite>sprites\spr_player_right</sprite>
       <sprite>sprites\spr_player_back</sprite>
+      <sprite>sprites\spr_player_flying_front</sprite>
+      <sprite>sprites\spr_player_flying_left</sprite>
+      <sprite>sprites\spr_player_flying_right</sprite>
+      <sprite>sprites\spr_player_flying_back</sprite>
     </sprites>
     <sprites name="Elements">
       <sprite>sprites\spr_ele_fire</sprite>
@@ -133,6 +137,8 @@
     <object>objects\obj_inv_slot_parent</object>
     <object>objects\obj_inv_combine_effect</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_player_flying</object>
+    <object>objects\obj_player_walking</object>
     <objects name="Elements">
       <object>objects\obj_ele_fire</object>
       <object>objects\obj_ele_wind</object>

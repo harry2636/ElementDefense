@@ -122,7 +122,7 @@ switch(lvl){
     break;
   case 6:
     dmg = 85;
-    atk_spd = -30;
+    atk_spd = -10;
     proj_spd = 7;
     atk_range = 48
     break;

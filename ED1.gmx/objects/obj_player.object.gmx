@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_lifeform_parent</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -27,14 +27,14 @@
             <kind>1</kind>
             <string>/// Player Creation
 event_inherited();
-
+phy_fixed_rotation = 1;
 image_index=0;
 image_speed=0;
 
 spd = 4;
 dist = 4;
 keys = 0;
-udlr_dir = "d"; //directio: up,down,left,right
+udlr_dir = "d"; //direction: up,down,left,right
 dir = 90;
 slow_factor = 1;
 mine_range = 24;
@@ -46,6 +46,13 @@ upgrade_mode = 0;
 
 instance_create(mine_area_x, mine_area_y, obj_mine_area);
 
+img_spd = 1;
+
+front_sprite = spr_player_front;
+back_sprite = spr_player_back;
+left_sprite = spr_player_left;
+right_sprite = spr_player_right;
+stop_image = 1;
 scr_get_input();
 </string>
           </argument>
@@ -80,67 +87,69 @@ if (room == 1 &amp;&amp; build_mode == 1){
 dist = spd/slow_factor;
 
 if (ru_key){
-    sprite_index = spr_player_back;
-    image_speed =1;
+    sprite_index = back_sprite;
+    image_speed = img_spd;
     dir = 315;
     phy_position_x += dist/1.4;
     phy_position_y -= dist/1.4;
 }
 
 else if (rd_key){
-    sprite_index = spr_player_front;
-    image_speed =1;
+    sprite_index = front_sprite;
+    image_speed = img_spd;
     dir = 45;
     phy_position_x += dist/1.4;
     phy_position_y += dist/1.4;
 }
 else if (lu_key){
-    sprite_index = spr_player_back;
-    image_speed =1;
+    sprite_index = back_sprite;
+    image_speed = img_spd;
     dir = 225;
     phy_position_x -= dist/1.4;
     phy_position_y -= dist/1.4;
 }
 else if (ld_key){
-    sprite_index = spr_player_front;
-    image_speed =1;
+    sprite_index = front_sprite;
+    image_speed = img_spd;
     dir = 135;
     phy_position_x -= dist/1.4;
     phy_position_y += dist/1.4;
 }
 //Move Left
 else if (left_key) {
-    sprite_index = spr_player_left;
-    image_speed = 1;
+    sprite_index = left_sprite;
+    image_speed = img_spd;
     dir = 180;
     phy_position_x -= dist;
 }
 //Move Right
 else if (right_key) {
-    sprite_index = spr_player_right;
-    image_speed = 1;
+    sprite_index = right_sprite;
+    image_speed = img_spd;
     dir = 0;
     phy_position_x += dist;
 }
 //Move Up
 else if (up_key) {
-    sprite_index = spr_player_back ;
-    image_speed = 1;
+    sprite_index = back_sprite ;
+    image_speed = img_spd;
     dir = 270;
     phy_position_y -= dist;
 }
 //Move Down
 else if (down_key) {
-    sprite_index = spr_player_front;
-    image_speed = 1;
+    sprite_index = front_sprite;
+    image_speed = img_spd;
     dir = 90;
     phy_position_y += dist;
 }
 
 
 else{
-    image_speed = 0;
-    image_index = 0;
+    if (stop_image == 1){
+      image_speed = 0;
+      image_index = 0;
+    }
 }
 
 
@@ -222,6 +231,29 @@ if room == 1 {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_wall">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collide
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_mat_parent">
       <action>
         <libid>1</libid>
@@ -243,6 +275,29 @@ if room == 1 {
 with(other){
   instance_destroy();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_ele_parent">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Collide
 </string>
           </argument>
         </arguments>
