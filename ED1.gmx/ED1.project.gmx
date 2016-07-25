@@ -105,6 +105,8 @@
       <sprite>sprites\spr_effect_ice</sprite>
       <sprite>sprites\spr_effect_fire</sprite>
       <sprite>sprites\spr_effect_explosion</sprite>
+      <sprite>sprites\spr_effect_wind_tmp</sprite>
+      <sprite>sprites\spr_effect_wind</sprite>
     </sprites>
     <sprites name="inventory">
       <sprite>sprites\spr_inv_side</sprite>
@@ -192,6 +194,7 @@
       <object>objects\obj_effect_thunder</object>
       <object>objects\obj_effect_ice</object>
       <object>objects\obj_effect_fire</object>
+      <object>objects\obj_effect_wind</object>
       <object>objects\obj_effect_explosion</object>
     </objects>
     <objects name="Enemy_objects">

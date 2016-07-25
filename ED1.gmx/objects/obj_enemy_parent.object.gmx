@@ -40,6 +40,11 @@ target_tower = -1;
 
 
 //for movement
+enemy_sprite_front = spr_player_front;
+enemy_sprite_back = spr_player_back;
+enemy_sprite_left = spr_player_left;
+enemy_sprite_right = spr_player_right;
+
 udlr_dir = 0; //direction: up,down,left,right
 dir = 0;
 phy_angular_velocity = 0;
@@ -237,19 +242,19 @@ if (moving != 1){
 switch (udlr_dir)
 {
   case 0:
-    sprite_index = spr_player_front;
+    sprite_index = enemy_sprite_front;
     image_speed = 1;
     break;
   case 1:
-    sprite_index = spr_player_right;
+    sprite_index = enemy_sprite_right;
     image_speed = 1;
     break;
   case 2:
-    sprite_index = spr_player_back;
+    sprite_index = enemy_sprite_back;
     image_speed = 1;
     break;
   case 3:
-    sprite_index = spr_player_left;
+    sprite_index = enemy_sprite_left;
     image_speed = 1;
     break;
   case 4:

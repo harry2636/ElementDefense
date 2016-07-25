@@ -106,22 +106,33 @@ if (position_meeting(x, y, obj_tower_parent)){
   if (position_meeting(x, y, obj_fire_parent) &amp;&amp; global.tower_fire &gt; 0 &amp;&amp; instance_place(x, y, obj_fire_parent).lvl &lt; 6){
     sprite_index = spr_build_area_upgrade;
     upgradeable = 1;
+    attack_area.range = 150;
   }
   else if (position_meeting(x, y, obj_wind_parent) &amp;&amp; global.tower_wind &gt; 0 &amp;&amp; instance_place(x, y, obj_wind_parent).lvl &lt; 6){
     sprite_index = spr_build_area_upgrade;
     upgradeable = 2;
+    wind_tower_ins = instance_nearest(x,y,obj_tower_parent);
+    if(wind_tower_ins.lvl == 5){
+      attack_area.range = 48;
+    }
+    else{
+      attack_area.range = 150;
+    }
   }
   else if (position_meeting(x, y, obj_thunder_parent) &amp;&amp; global.tower_thunder &gt; 0 &amp;&amp; instance_place(x, y, obj_thunder_parent).lvl &lt; 6){
     sprite_index = spr_build_area_upgrade;
     upgradeable = 3;
+    attack_area.range = 150;
   }
   else if (position_meeting(x, y, obj_ice_parent) &amp;&amp; global.tower_ice &gt; 0 &amp;&amp; instance_place(x, y, obj_ice_parent).lvl &lt; 6){
     sprite_index = spr_build_area_upgrade;
     upgradeable = 4;
+    attack_area.range = 150;
   }
   else{
     sprite_index = spr_build_area_red;
     upgradeable = 0;
+    attack_area.range = 0;
   }
 }
 else if (place_meeting(x, y, obj_follow_target)){
@@ -130,6 +141,7 @@ else if (place_meeting(x, y, obj_follow_target)){
   upgradeable = 0;
   on_enemy = 1;
   sprite_index = spr_build_area_red;
+  attack_area.range = 0;
 }
 else if (x &lt; 48 || x &gt; 976 || y &lt; 48 || y &gt; 560){
   outside_room = 1;
@@ -137,6 +149,7 @@ else if (x &lt; 48 || x &gt; 976 || y &lt; 48 || y &gt; 560){
   upgradeable = 0;
   on_enemy = 0;
   sprite_index = spr_build_area_red;
+  attack_area.range = 0;
 }
 else{
   //show_debug_message("not anymore");
@@ -145,7 +158,9 @@ else{
   on_enemy = 0;
   upgradeable = 0;
   sprite_index = spr_build_area;
+  attack_area.range = 150;
 }
+
 
 attack_area.x = x;
 attack_area.y = y;

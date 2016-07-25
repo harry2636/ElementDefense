@@ -89,8 +89,15 @@ target = -1;
               instance_destroy();
               break;
             case 2:
-              target.current_hp -= dmg;
+              /*target.current_hp -= dmg;
               target.timer = 90;
+              wind_effect = instance_create(x, y, obj_effect_wind);
+              with(obj_enemy_parent){
+                if (place_meeting(phy_position_x, phy_position_y, fire_effect)){
+                  current_hp -= fire_splash_dmg;
+                  timer = 90;
+                }
+              }
               target.fx_wind_timer = 4 * room_speed;
               wind_x = lengthdir_x(proj_spd*5+power(global.enemy_spd, 3), dir);
               wind_y = lengthdir_y(proj_spd*5+power(global.enemy_spd, 3), dir);
@@ -98,7 +105,11 @@ target = -1;
               target.wind_y = -wind_y;
               with(target){
                 physics_apply_impulse(phy_position_x, phy_position_y, wind_x, wind_y);
-              }
+              }*/
+              //t_x = target.phy_position_x;
+              //t_y = target.phy_position_y;
+              //pushed_dist_x = 0;
+              
               instance_destroy();
               break;
             case 3:
