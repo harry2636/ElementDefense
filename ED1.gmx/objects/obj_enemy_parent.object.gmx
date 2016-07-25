@@ -31,6 +31,14 @@ spd = global.enemy_spd;
 max_hp = global.enemy_hp;
 current_hp = global.enemy_hp;
 
+//Attack Tower
+atk_dmg = 50;
+atk_range = 100;
+atk_spd = 40;
+atk_timer = 0;
+target_tower = -1;
+
+
 //for movement
 udlr_dir = 0; //direction: up,down,left,right
 dir = 0;
@@ -52,11 +60,22 @@ hp_gage.visible = false;
 timer = 0;
 
 //effect
-fx_thunder_timer = 0;
+//ice
 fx_ice_timer = 0;
+freeze_time = 0;
+ice_effect = instance_create(phy_position_x, phy_position_y, obj_effect_ice);
+ice_effect.image_speed = 0;
+ice_effect.visible = false;
+frozen_x = 0;
+frozen_y = 0;
+//thunder
+fx_thunder_timer = 0;
 thunder_effect = instance_create(phy_position_x, phy_position_y, obj_effect_thunder);
 thunder_effect.image_speed = 0.3;
 thunder_effect.visible = false;
+
+//wind
+fx_wind_timer = 0;
 </string>
           </argument>
         </arguments>
@@ -92,6 +111,9 @@ with(hp_gage){
 with(thunder_effect){
   instance_destroy();
 }
+with(ice_effect){
+  instance_destroy();
+}
 global.num_killed += 1;
 </string>
           </argument>
@@ -115,13 +137,18 @@ global.num_killed += 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Follow Target
-
+            <string>///Enemy actions
+//Follow Target
 move_speed = spd/slow_factor;
 moving = my_target.moving;
-
+//show_debug_message("phy_speed_x = " + string(phy_speed_x));
+//show_debug_message("phy_speed_y = " + string(phy_speed_y));
+//show_debug_message("phy_linear_velocity_x = " + string(phy_linear_velocity_x));
+//show_debug_message("phy_linear_velocity_y = " + string(phy_linear_velocity_y));
 if (point_distance(my_target.x, my_target.y, phy_position_x, phy_position_y) &gt; 20){
   my_target.wait = 1;
+  my_target.x = phy_position_x;
+  my_target.y = phy_position_y;
 }
 else{
   my_target.wait = 0;
@@ -139,6 +166,50 @@ else{
   dx = 0;
   dy = 0;
 }
+
+//Attack nearest Tower
+atk_timer = (atk_timer+1) % (70 - atk_spd);
+//show_debug_message("Attack Timer = " + string(atk_timer));
+if (my_target.atk_mode == 1){
+  //show_debug_message("ATTACK MODE ON!!!");
+  //show_debug_message("Tower exists? " + string(instance_exists(obj_tower_parent)));
+  if (instance_exists(obj_tower_parent)){
+    //show_debug_message("Target Exists!");
+    if (target_tower == -1 || !instance_exists(target_tower)){
+      //show_debug_message("New Target Tower locked");
+      target_tower = instance_nearest(phy_position_x, phy_position_y, obj_tower_parent);
+    }
+    //show_debug_message("x: " + string(obj_player.phy_position_x));
+    //show_debug_message("y: " + string(obj_player.phy_position_y));
+    //show_debug_message("Target x: " +string(target_tower.phy_position_x));
+    //show_debug_message("Target y: " +string(target_tower.phy_position_y));
+    dist = point_distance(target_tower.phy_position_x, target_tower.phy_position_y, phy_position_x, phy_position_y);
+    if (dist &gt; atk_range){
+      //show_debug_message("Target Too Far! Approaching!");
+      my_target.approaching = 1;
+      my_target.goal_x = target_tower.phy_position_x;
+      my_target.goal_y = target_tower.phy_position_y;
+    }
+    else{
+      my_target.approaching = 0;
+      my_target.goal_x = my_target.ultimate_goal_x;
+      my_target.goal_y = my_target.ultimate_goal_y;
+      if (atk_timer == 0){
+        //show_debug_message("ATTACKING!!!!!!!!!!!!!!!!!!");
+        enemy_bullet = instance_create(phy_position_x, phy_position_y, obj_enemy_bullet);
+        enemy_bullet.dmg = atk_dmg;
+        enemy_bullet.target = target_tower;
+      }
+    }
+  }
+  else{
+    my_target.atk_mode = 0;
+  }
+}
+else{
+  target_tower = -1;
+}
+
 //Face direction
 angle_to_rotate = facing_direction - dir;
 //phy_rotation += angle_to_rotate;
@@ -191,6 +262,36 @@ switch (udlr_dir)
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_enemy_dest">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Arrives at the destination.
+
+obj_enemy_dest.current_hp -= atk_dmg;
+instance_create(phy_position_x, phy_position_y, obj_effect_explosion);
+
+global.num_suicide_enemies += 1;
+
+instance_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -213,6 +314,12 @@ switch (udlr_dir)
 }
 if (fx_thunder_timer &gt; 0){
   fx_thunder_timer -= 1;
+}
+if (fx_ice_timer &gt; 0){
+  fx_ice_timer -= 1;
+}
+if (fx_wind_timer &gt; 0){
+  fx_wind_timer -=1;
 }
 
 draw_self();
@@ -237,6 +344,36 @@ if (instance_exists(thunder_effect)){
   else{
     thunder_effect.visible = false;
   }
+}
+if (instance_exists(ice_effect)){
+  ice_effect.x = phy_position_x;
+  ice_effect.y = phy_position_y;
+  if (fx_ice_timer &gt; 0){
+    if(fx_ice_timer &gt; round((2/3)*freeze_time)*room_speed){
+      ice_effect.image_index = 0;
+    }
+    else if(fx_ice_timer &gt; round((1/3)*freeze_time)*room_speed){
+      ice_effect.image_index = 1;
+    }
+    else{
+      ice_effect.image_index = 2;
+    }
+    ice_effect.visible = true;
+    phy_position_x = frozen_x;
+    phy_position_y = frozen_y;
+    spd = 0;
+  }
+  else{
+    ice_effect.visible = false;
+    spd = global.enemy_spd;
+  }
+}
+
+if (fx_wind_timer == 0){
+  phy_speed_x = 0;
+  phy_speed_y = 0;
+  phy_linear_velocity_x = 0;
+  phy_linear_velocity_y = 0;
 }
 
 if(current_hp &lt;= 0){

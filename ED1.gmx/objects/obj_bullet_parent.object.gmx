@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>///Create Bullet
 
+tower_x = 0;
+tower_y = 0;
 lvl = 1;
 dmg = 0;
 type = 0;
@@ -65,13 +67,62 @@ target = -1;
       dy = lengthdir_y(proj_spd, dir);
       x -= dx;
       y -= dy;
-      if (place_meeting(x,y,target)){
-        if (lvl == 6 &amp;&amp; type == 3){
-          target.fx_thunder_timer = 10;
+      if (position_meeting(x,y,target)){
+        if (lvl == 6){
+          switch(type){
+            case 1:
+              fire_effect = instance_create(x,y, obj_effect_fire);
+              //totalEnemies = instance_number(obj_enemy_parent);
+              /*for (i = 0; i &lt; totalEnemies; i+=1){
+                enemy_i = instance_find(obj_enemy_parent, i){
+                  
+                }
+              }*/
+              obj_enemy_parent.fire_effect = fire_effect;
+              obj_enemy_parent.fire_splash_dmg = dmg;
+              with(obj_enemy_parent){
+                if (place_meeting(phy_position_x, phy_position_y, fire_effect)){
+                  current_hp -= fire_splash_dmg;
+                  timer = 90;
+                }
+              }
+              instance_destroy();
+              break;
+            case 2:
+              target.current_hp -= dmg;
+              target.timer = 90;
+              target.fx_wind_timer = 4 * room_speed;
+              wind_x = lengthdir_x(proj_spd*5+power(global.enemy_spd, 3), dir);
+              wind_y = lengthdir_y(proj_spd*5+power(global.enemy_spd, 3), dir);
+              target.wind_x = -wind_x;
+              target.wind_y = -wind_y;
+              with(target){
+                physics_apply_impulse(phy_position_x, phy_position_y, wind_x, wind_y);
+              }
+              instance_destroy();
+              break;
+            case 3:
+              target.fx_thunder_timer = 10;
+              target.current_hp -= dmg;
+              target.timer = 90;
+              instance_destroy();
+              break;
+            case 4:
+              target.freeze_time = 3;
+              target.fx_ice_timer = target.freeze_time * room_speed;
+              target.frozen_x = target.phy_position_x;
+              target.frozen_y = target.phy_position_y;
+              target.current_hp -= dmg;
+              target.timer = 90;
+              instance_destroy();
+              break;
+          }
         }
-        instance_destroy();
-        target.current_hp -= dmg;
-        target.timer = 90;
+        else{
+          instance_destroy();
+          target.current_hp -= dmg;
+          target.timer = 90;
+        }
       }
   }
 }

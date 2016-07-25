@@ -96,35 +96,40 @@ switch(lvl){
             <kind>1</kind>
             <string>switch(lvl){
   case 1:
-    dmg = 10;
-    atk_spd = 10;
-    proj_spd = 3;
+    dmg = 30;
+    atk_spd = 5;
+    proj_spd = 4;
     break;
   case 2:
-    dmg = 20;
-    atk_spd = 15;
-    proj_spd = 3;
+    dmg = 30;
+    atk_spd = 10;
+    proj_spd = 4;
     break;
   case 3:
-    dmg = 30;
-    atk_spd = 20;
-    proj_spd = 3;
+    dmg = 45;
+    atk_spd = 10;
+    proj_spd = 4;
     break;
   case 4:
-    dmg = 40;
-    atk_spd = 25;
-    proj_spd = 3;
+    dmg = 60;
+    atk_spd = 10;
+    proj_spd = 4;
     break;
   case 5:
-    dmg = 50;
-    atk_spd = 30;
+    dmg = 70;
+    atk_spd = 10;
     proj_spd = 4;
     break;
   case 6:
-    dmg = 60;
-    atk_spd = 30;
+    dmg = 100;
+    atk_spd = 10;
     proj_spd = 5;
     break;
+}
+current_hp = max_hp;
+level_status.lvl = lvl;
+with(level_status){
+  event_user(0);
 }
 </string>
           </argument>

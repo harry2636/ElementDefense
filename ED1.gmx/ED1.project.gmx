@@ -79,14 +79,22 @@
         <sprite>sprites\spr_ice5</sprite>
         <sprite>sprites\spr_ice6</sprite>
       </sprites>
+      <sprite>sprites\spr_tower_wall</sprite>
     </sprites>
     <sprites name="Bullets">
-      <sprite>sprites\spr_bullet_fire</sprite>
-      <sprite>sprites\spr_bullet_wind</sprite>
-      <sprite>sprites\spr_bullet_ice</sprite>
-      <sprite>sprites\spr_bullet_thunder3</sprite>
-      <sprite>sprites\spr_bullet_thunder4</sprite>
-      <sprite>sprites\spr_effect_thunder</sprite>
+      <sprite>sprites\spr_bullet_fire1</sprite>
+      <sprite>sprites\spr_bullet_fire2</sprite>
+      <sprite>sprites\spr_bullet_fire3</sprite>
+      <sprite>sprites\spr_bullet_thunder1</sprite>
+      <sprite>sprites\spr_bullet_thunder2</sprite>
+      <sprite>sprites\spr_bullet_ice1</sprite>
+      <sprite>sprites\spr_bullet_ice2</sprite>
+      <sprite>sprites\spr_bullet_ice3</sprite>
+      <sprite>sprites\spr_bullet_wind1</sprite>
+      <sprite>sprites\spr_bullet_wind2</sprite>
+      <sprite>sprites\spr_bullet_wind3</sprite>
+      <sprite>sprites\spr_bullet_enemy2</sprite>
+      <sprite>sprites\spr_bullet_enemy</sprite>
     </sprites>
     <sprites name="Messages">
       <sprite>sprites\spr_msg_instruction1</sprite>
@@ -94,6 +102,9 @@
     </sprites>
     <sprites name="Effects">
       <sprite>sprites\spr_effect_thunder1</sprite>
+      <sprite>sprites\spr_effect_ice</sprite>
+      <sprite>sprites\spr_effect_fire</sprite>
+      <sprite>sprites\spr_effect_explosion</sprite>
     </sprites>
     <sprites name="inventory">
       <sprite>sprites\spr_inv_side</sprite>
@@ -129,6 +140,7 @@
     </objects>
     <objects name="Gage_bar">
       <object>objects\obj_hp_container</object>
+      <object>objects\obj_level_status</object>
     </objects>
     <objects name="Materials">
       <object>objects\obj_mat_parent</object>
@@ -143,6 +155,7 @@
       <object>objects\obj_attack_area</object>
       <object>objects\obj_enemy_spwn</object>
       <object>objects\obj_wall</object>
+      <object>objects\obj_enemy_dest</object>
     </objects>
     <objects name="Towers">
       <object>objects\obj_tower_parent</object>
@@ -158,6 +171,7 @@
       <objects name="Ice">
         <object>objects\obj_ice_parent</object>
       </objects>
+      <object>objects\obj_tower_wall</object>
     </objects>
     <object>objects\obj_follow_target</object>
     <object>objects\obj_enemy_parent</object>
@@ -175,6 +189,12 @@
     </objects>
     <objects name="Effects">
       <object>objects\obj_effect_thunder</object>
+      <object>objects\obj_effect_ice</object>
+      <object>objects\obj_effect_fire</object>
+      <object>objects\obj_effect_explosion</object>
+    </objects>
+    <objects name="Enemy_objects">
+      <object>objects\obj_enemy_bullet</object>
     </objects>
   </objects>
   <rooms name="rooms">

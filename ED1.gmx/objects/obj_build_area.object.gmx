@@ -26,8 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>///Create Build Area
-upgradeable = 0;
+outside_room = 0;
 on_tower = 0;
+upgradeable = 0;
 on_enemy = 0;
 timer = 0;
 attack_area = instance_create(x, y, obj_attack_area);
@@ -99,6 +100,7 @@ attack_area = instance_create(x, y, obj_attack_area);
 
 if (position_meeting(x, y, obj_tower_parent)){
   //show_debug_message("on tower");
+  outside_room = 0;
   on_tower = 1;
   on_enemy = 0;
   if (position_meeting(x, y, obj_fire_parent) &amp;&amp; global.tower_fire &gt; 0 &amp;&amp; instance_place(x, y, obj_fire_parent).lvl &lt; 6){
@@ -123,13 +125,22 @@ if (position_meeting(x, y, obj_tower_parent)){
   }
 }
 else if (place_meeting(x, y, obj_follow_target)){
+  outside_room = 0;
   on_tower = 0;
   upgradeable = 0;
   on_enemy = 1;
   sprite_index = spr_build_area_red;
 }
+else if (x &lt; 48 || x &gt; 976 || y &lt; 48 || y &gt; 560){
+  outside_room = 1;
+  on_tower = 0;
+  upgradeable = 0;
+  on_enemy = 0;
+  sprite_index = spr_build_area_red;
+}
 else{
   //show_debug_message("not anymore");
+  outside_room = 0;
   on_tower = 0;
   on_enemy = 0;
   upgradeable = 0;
@@ -162,34 +173,13 @@ attack_area.y = y;
             <kind>1</kind>
             <string>///Draw upgradeable
 draw_self();
-timer += 1;
-upgrade_index = (timer % 16) div 4;
+timer = (timer+1) % 32;
+upgrade_index = timer div 8;
 
 if (on_tower == 1){
-  level = instance_place(x, y, obj_tower_parent).lvl;
-  sprimg = -1;
-  switch(level){
-    case 1:
-      sprimg = spr_tower_lvl1;
-      break;
-    case 2:
-      sprimg = spr_tower_lvl2;
-      break;
-    case 3:
-      sprimg = spr_tower_lvl3;
-      break;
-    case 4:
-      sprimg = spr_tower_lvl4;
-      break;
-    case 5:
-      sprimg = spr_tower_lvl5;
-      break;
-    case 6:
-      sprimg = spr_tower_lvl6;
-      break;
-  }
-  if (sprimg != -1){
-    draw_sprite(sprimg, 0, x, y-20);
+  tower = instance_nearest(x, y, obj_tower_parent);
+  if (tower != noone){
+    tower.level_status_timer = 5;
   }
 }
 if (upgradeable == 1){

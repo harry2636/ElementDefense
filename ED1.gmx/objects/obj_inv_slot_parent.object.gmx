@@ -56,49 +56,52 @@ slot_text = 0
 // text
 switch(slot_number) {
     case 0:
-        slot_text = global.mat_wind
+        slot_text = global.mat_fire;
         break;
     case 1:
-        slot_text = global.mat_wind
+        slot_text = global.mat_wind;
         break;
     case 2:
-        slot_text = global.mat_thunder
+        slot_text = global.mat_thunder;
         break;
     case 3:
-        slot_text = global.mat_ice
+        slot_text = global.mat_ice;
         break;
     case 4:
-        slot_text = global.tower_fire
+        slot_text = global.tower_fire;
         break;
     case 5:
-        slot_text = global.tower_wind
+        slot_text = global.tower_wind;
         break;
     case 6:
-        slot_text = global.tower_thunder
+        slot_text = global.tower_thunder;
         break;
     case 7:
-        slot_text = global.tower_ice
+        slot_text = global.tower_ice;
+        break;
+    case 12:
+        slot_text = global.tower_wall;
         break;
 }
 draw_set_color(c_white)
 draw_set_halign(fa_center);
-if (slot_number &lt; 8)
+if (slot_number &lt; 8 || slot_number == 12)
     draw_text(x, y + 16, string(slot_text));
     
 // combine slot image
 if slot_number &gt; 7 &amp;&amp; slot_number &lt; 11 &amp;&amp; global.mat_selected[slot_number - 8] != 0 {
     switch(global.mat_selected[slot_number - 8]) {
         case 1:
-            sprite = spr_mat_fire
+            sprite = spr_mat_fire;
             break;
         case 2:
-            sprite = spr_mat_wind
+            sprite = spr_mat_wind;
             break;
         case 3:
-            sprite = spr_mat_thunder
+            sprite = spr_mat_thunder;
             break;
         case 4:
-            sprite = spr_mat_ice
+            sprite = spr_mat_ice;
             break;
     }
     draw_sprite(sprite, 0, x, y)

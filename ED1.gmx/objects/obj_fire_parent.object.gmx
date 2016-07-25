@@ -97,34 +97,39 @@ switch(lvl){
             <string>switch(lvl){
   case 1:
     dmg = 10;
-    atk_spd = 10;
+    atk_spd = 15;
     proj_spd = 5;
     break;
   case 2:
     dmg = 25;
-    atk_spd = 10;
+    atk_spd = 15;
     proj_spd = 5;
     break;
   case 3:
     dmg = 40;
-    atk_spd = 10;
+    atk_spd = 15;
     proj_spd = 5;
     break;
   case 4:
     dmg = 55;
-    atk_spd = 10;
+    atk_spd = 15;
     proj_spd = 5;
     break;
   case 5:
     dmg = 70;
-    atk_spd = 10;
+    atk_spd = 15;
     proj_spd = 5;
     break;
   case 6:
     dmg = 85;
-    atk_spd = 10;
+    atk_spd = 15;
     proj_spd = 5;
     break;
+}
+current_hp = max_hp;
+level_status.lvl = lvl;
+with(level_status){
+  event_user(0);
 }
 </string>
           </argument>

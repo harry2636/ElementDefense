@@ -27,14 +27,60 @@
             <kind>1</kind>
             <string>///Create Tower
 event_inherited();
+
+//Stat
 type = 0;
 lvl = 1;
 dmg = 10;
 atk_spd = 1;
 proj_spd = 5;
+
+
+//hpgage
+max_hp = 100;
+current_hp = 100;
+hp_gage = instance_create(phy_position_x, phy_position_y-21, obj_hp_container);
+hp_gage.max_hp = max_hp;
+hp_gage.current_hp = current_hp;
+hp_gage.visible = false;
+hp_gage_timer = 0;
+
+//Level
+level_status = instance_create(phy_position_x, phy_position_y-20, obj_level_status);
+level_status.lvl = lvl;
+level_status.visible = false;
+
+
 timer = 0;
+level_status_timer = 0;
+hp_gage_timer = 0;
 bullet_object = -1;
 event_user(0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(hp_gage){
+  instance_destroy();
+}
 </string>
           </argument>
         </arguments>
@@ -64,11 +110,13 @@ if (atk_spd &gt;= 70){
 else{
   timer = (timer + 1) % (70 - atk_spd);
 }
-if (timer == 0 &amp;&amp; instance_exists(obj_enemy_parent))
+if (timer == 0 &amp;&amp; instance_exists(obj_enemy_parent) &amp;&amp; type != 5)
 {
     nearest_enemy = instance_nearest(phy_position_x, phy_position_y, obj_enemy_parent);
     if (point_distance(x, y, nearest_enemy.phy_position_x, nearest_enemy.phy_position_y) &lt; 150){
         bullet = instance_create(phy_position_x, phy_position_y, bullet_object);
+        bullet.tower_x = phy_position_x;
+        bullet.tower_y = phy_position_y;
         bullet.lvl = lvl;
         bullet.type = type;
         bullet.dmg = dmg;
@@ -78,6 +126,61 @@ if (timer == 0 &amp;&amp; instance_exists(obj_enemy_parent))
         }
         bullet.target = nearest_enemy;
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (hp_gage_timer &gt; 0){
+  hp_gage_timer -= 1;
+}
+if (level_status_timer &gt; 0){
+  level_status_timer -= 1;
+}
+draw_self();
+if (instance_exists(hp_gage)){
+  hp_gage.x = phy_position_x;
+  hp_gage.y = phy_position_y-21;
+  if (hp_gage_timer &gt; 0){
+    hp_gage.current_hp = current_hp;
+    hp_gage.visible = true;
+  }
+  else{
+    hp_gage.visible = false;
+  }
+}
+
+if (instance_exists(level_status)){
+  level_status.x = phy_position_x;
+  level_status.y = phy_position_y-20;
+  if (level_status_timer &gt; 0){
+    level_status.visible = true;
+  }
+  else{
+    level_status.visible = false;
+  }
+}
+
+if (current_hp &lt;= 0){
+  instance_destroy();
 }
 </string>
           </argument>
