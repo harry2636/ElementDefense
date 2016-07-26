@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///Create Code
-
+global.game_over = 0;
 global.leaderboard_previous = room;
 global.score_shared = 0;
 selected = 1;

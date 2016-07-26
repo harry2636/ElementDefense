@@ -319,7 +319,7 @@ switch(state){
     }
     break;
   case "defend":
-    if(global.num_killed &gt;= global.num_enemies){
+    if(global.num_killed &gt;= global.num_enemies &amp;&amp; global.game_over == 0){
       if (alarm[2] == -1){
         alarm[2] = room_speed * 3;
       }
