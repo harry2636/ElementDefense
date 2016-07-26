@@ -49,19 +49,27 @@ topbar_y = 1568;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_white)
+            <string>draw_set_font(font_emulogic9);
+draw_set_color(c_white)
 draw_set_halign(fa_left)
-draw_text(topbar_x + 32 * 2, topbar_y + 24, "Level - " + string(global.level))
 
-draw_text(topbar_x + 32 * 23, topbar_y + 24, "Enemy stats: ")
-draw_text(topbar_x + 32 * 27, topbar_y + 8,
-    "Amount - " + string(obj_master.stage_num_enemies[global.level - 1]))
-draw_text(topbar_x + 32 * 27, topbar_y + 24,
-    "Speed - " + string(obj_master.stage_spd_enemies[global.level - 1]))
-draw_text(topbar_x + 32 * 27, topbar_y + 40,
-    "HP - " + string(obj_master.stage_hp_enemies[global.level - 1]))
-
-
+draw_text(topbar_x + 32 * 27, topbar_y + 12,
+    "Number : " + string(obj_master.stage_num_enemies[global.level - 1]))
+draw_text(topbar_x + 32 * 27, topbar_y + 28,
+    " Speed : " + string(obj_master.stage_spd_enemies[global.level - 1]))
+draw_text(topbar_x + 32 * 27, topbar_y + 44,
+    "    HP : " + string(obj_master.stage_hp_enemies[global.level - 1]));
+if(instance_exists(obj_player)){
+  draw_sprite(obj_player.front_sprite, 1, topbar_x+28, topbar_y+28);
+}
+draw_text(topbar_x + 32 * 2 + 5, topbar_y + 16, "SCORE : " + string(score))
+draw_text(topbar_x + 32 * 2 + 5, topbar_y + 40, "STAGE : " + string(global.level))
+draw_set_color(c_blue);
+draw_rectangle(topbar_x + 32 * 2 -6, topbar_y+8, topbar_x+32* 2 -2, topbar_y+48, 0);
+draw_set_color(c_red);
+draw_text_ext(topbar_x + 32 * 24 + 13, topbar_y + 28, "Enemy stats ", 15, 75);
+draw_rectangle(topbar_x + 32 * 26 + 20, topbar_y+8, topbar_x+32* 26 + 23, topbar_y+48, 0);
+/*
 if room == 1 &amp;&amp; instance_exists(obj_tower_parent) {
     inst = instance_nearest(obj_player.phy_position_x, obj_player.phy_position_y, obj_tower_parent)
     if point_distance(obj_player.phy_position_x, obj_player.phy_position_y, inst.phy_position_x, inst.phy_position_y) &lt; 40 {
@@ -73,7 +81,7 @@ if room == 1 &amp;&amp; instance_exists(obj_tower_parent) {
     }
    
 }
-    
+*/    
 
 </string>
           </argument>

@@ -78,10 +78,10 @@ scr_get_input();
             <kind>1</kind>
             <string>///Step Event
 scr_get_input();
-if (room == 1 &amp;&amp; build_mode == 0){
+if (room == room_dungeon &amp;&amp; build_mode == 0){
   scr_combine_key_input();
 }
-if (room == 1 &amp;&amp; build_mode == 1){
+if (room == room_dungeon &amp;&amp; build_mode == 1){
   scr_build_key_input();
 }
 dist = spd/slow_factor;
@@ -200,7 +200,7 @@ if (space_key){
       }
     }
 }
-if (w_key &amp;&amp; room == 1){
+if (w_key &amp;&amp; room == room_dungeon){
   if(build_mode == 0){
     build_mode = 1;
     instance_create(phy_position_x, phy_position_y, obj_build_area);
@@ -214,9 +214,9 @@ if (w_key &amp;&amp; room == 1){
   }
 }
 
-if room == 0
+if room == room_world
     view_vborder[0] = min(1536 - phy_position_y, 512)
-if room == 1 {
+if room == room_dungeon {
     view_vborder[0] = min(608 - phy_position_y, 512)
     view_hborder[0] = min(992 - phy_position_x, 512)
 }
@@ -307,7 +307,7 @@ with(other){
   <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectDensity>0.100000001490116</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>

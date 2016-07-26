@@ -130,16 +130,17 @@ if (timer == 0 &amp;&amp; instance_exists(obj_enemy_parent) &amp;&amp; type != 5
         }
     }
     else{
-      if (dist_enemy &lt; 60){
+      if (dist_enemy &lt; 80){
           wind_effect = instance_create(x, y, obj_effect_wind);
           obj_enemy_parent.wind_effect = wind_effect;
           obj_enemy_parent.wind_splash_dmg = dmg;
           obj_enemy_parent.wind_proj_spd = proj_spd;      
           with(obj_enemy_parent){
-            if (place_meeting(phy_position_x, phy_position_y, wind_effect)){
+            //if (place_meeting(phy_position_x, phy_position_y, wind_effect)){
+            if (point_distance(phy_position_x, phy_position_y, wind_effect.x, wind_effect.y) &lt; 80){
               current_hp -= wind_splash_dmg;
               timer = 90;
-              fx_wind_timer = 4 * room_speed;
+              fx_wind_timer = 5 * room_speed;
               wind_x = lengthdir_x(wind_proj_spd*5+power(spd, 3), dir);
               wind_y = lengthdir_y(wind_proj_spd*5+power(spd, 3), dir);
               physics_apply_impulse(phy_position_x, phy_position_y, wind_x, wind_y);

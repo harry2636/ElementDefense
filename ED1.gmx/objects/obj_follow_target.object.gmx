@@ -74,14 +74,14 @@ if (timer % 30 == 0 || place_meeting(x,y, obj_tower_parent)){
     if (approaching == 1){
       //remove the 'obstacle' cell at the goal
       mp_grid_clear_rectangle(grid, goal_x-16, goal_y - 16, goal_x+16, goal_y+16);
-      show_debug_message("Goal grid cleared.");
+      //show_debug_message("Goal grid cleared.");
     }
-    show_debug_message("Goal. x: " + string(goal_x) + ", y: " + string(goal_y));
+    //show_debug_message("Goal. x: " + string(goal_x) + ", y: " + string(goal_y));
     if (x == goal_x &amp;&amp; y == goal_y){
       if (approaching == 0){
         atk_mode = 0;
       }
-      show_debug_message("Reached to the destination");
+      //show_debug_message("Reached to the destination");
       path_end();
       path = -1;
       moving = 0;
@@ -90,12 +90,12 @@ if (timer % 30 == 0 || place_meeting(x,y, obj_tower_parent)){
       if (approaching == 0){
         atk_mode = 0;
       }
-      show_debug_message("Proceeding to the goal. x: " + string(goal_x) + ", y: " + string(goal_y));
+      //show_debug_message("Proceeding to the goal. x: " + string(goal_x) + ", y: " + string(goal_y));
       path_start(path, moving_speed, path_action_stop, 1);
       moving = 1;
     }
     else{
-      show_debug_message("Path not found. Attack initiated!");
+      //show_debug_message("Path not found. Attack initiated!");
       if (atk_mode == 1){
         atk_mode = 0;
       }

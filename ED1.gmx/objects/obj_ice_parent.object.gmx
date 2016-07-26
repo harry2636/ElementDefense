@@ -101,27 +101,27 @@ switch(lvl){
     proj_spd = 4;
     break;
   case 2:
-    dmg = 30;
+    dmg = 65;
     atk_spd = 10;
     proj_spd = 4;
     break;
   case 3:
-    dmg = 45;
+    dmg = 100;
     atk_spd = 10;
     proj_spd = 4;
     break;
   case 4:
-    dmg = 60;
+    dmg = 135;
     atk_spd = 10;
     proj_spd = 4;
     break;
   case 5:
-    dmg = 70;
+    dmg = 170;
     atk_spd = 10;
     proj_spd = 4;
     break;
   case 6:
-    dmg = 100;
+    dmg = 205;
     atk_spd = 10;
     proj_spd = 5;
     break;

@@ -105,7 +105,7 @@ fx_wind_timer = 0;
             <kind>1</kind>
             <string>///Destroyed
 
-show_debug_message("Enemy Destroyed");
+//show_debug_message("Enemy Destroyed");
 
 with(my_target){
   instance_destroy();
@@ -382,6 +382,7 @@ if (fx_wind_timer == 0){
 }
 
 if(current_hp &lt;= 0){
+  score += ((global.level div 10) + 1) * 10;
   instance_destroy();
 }
 </string>
@@ -393,7 +394,7 @@ if(current_hp &lt;= 0){
   <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
-  <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
+  <PhysicsObjectDensity>0.899999976158142</PhysicsObjectDensity>
   <PhysicsObjectRestitution>0.100000001490116</PhysicsObjectRestitution>
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>

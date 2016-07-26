@@ -25,6 +25,7 @@
     <sprites name="Gage_bar">
       <sprite>sprites\spr_hp_container</sprite>
       <sprite>sprites\spr_hp_gage</sprite>
+      <sprite>sprites\spr_hp_gage_white</sprite>
     </sprites>
     <sprites name="Materials">
       <sprite>sprites\spr_mat_fire</sprite>
@@ -49,6 +50,8 @@
       <sprite>sprites\spr_tower_lvl5</sprite>
       <sprite>sprites\spr_tower_lvl6</sprite>
       <sprite>sprites\spr_enemy_spwn</sprite>
+      <sprite>sprites\spr_enemy_dest</sprite>
+      <sprite>sprites\spr_enemy_dest_down</sprite>
     </sprites>
     <sprites name="Towers">
       <sprites name="Fire">
@@ -101,8 +104,10 @@
       <sprite>sprites\spr_bullet_enemy</sprite>
     </sprites>
     <sprites name="Messages">
+      <sprite>sprites\spr_leaderboard_row</sprite>
       <sprite>sprites\spr_msg_instruction1</sprite>
       <sprite>sprites\spr_msg_instruction2</sprite>
+      <sprite>sprites\spr_title</sprite>
     </sprites>
     <sprites name="Effects">
       <sprite>sprites\spr_effect_thunder1</sprite>
@@ -129,7 +134,16 @@
     <script>scripts\scr_get_input.gml</script>
     <script>scripts\scr_combine_key_input.gml</script>
     <script>scripts\scr_build_key_input.gml</script>
+    <script>scripts\scr_game_restart.gml</script>
+    <script>scripts\scr_share_score.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\arcade_font50</font>
+    <font>fonts\font_emulogic</font>
+    <font>fonts\font_emulogic20</font>
+    <font>fonts\font_emulogic15</font>
+    <font>fonts\font_emulogic9</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_master</object>
     <object>objects\obj_collide_parent</object>
@@ -158,11 +172,11 @@
       <object>objects\obj_mat_ice</object>
     </objects>
     <objects name="ETC">
+      <object>objects\obj_wall</object>
       <object>objects\obj_mine_area</object>
       <object>objects\obj_build_area</object>
       <object>objects\obj_attack_area</object>
       <object>objects\obj_enemy_spwn</object>
-      <object>objects\obj_wall</object>
       <object>objects\obj_enemy_dest</object>
     </objects>
     <objects name="Towers">
@@ -195,6 +209,10 @@
       <object>objects\obj_msg_instruction2</object>
       <object>objects\obj_timer</object>
       <object>objects\obj_topbar</object>
+      <object>objects\obj_end_controller</object>
+      <object>objects\obj_start_controller</object>
+      <object>objects\obj_leaderboard</object>
+      <object>objects\obj_leaderboard_row</object>
     </objects>
     <objects name="Effects">
       <object>objects\obj_effect_thunder</object>
@@ -208,8 +226,11 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_start</room>
     <room>rooms\room_world</room>
     <room>rooms\room_dungeon</room>
+    <room>rooms\room_end</room>
+    <room>rooms\room_leaderboard</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

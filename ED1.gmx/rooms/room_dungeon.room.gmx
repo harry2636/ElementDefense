@@ -55,7 +55,7 @@
     <instance objName="obj_wall" x="512" y="592" name="inst_3D468C15" locked="0" code="" scaleX="64" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="16" y="304" name="inst_746035A7" locked="0" code="" scaleX="2" scaleY="35.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1008" y="304" name="inst_77986B2E" locked="0" code="" scaleX="1.86666667461395" scaleY="37" colour="4294967295" rotation="0"/>
-    <instance objName="obj_enemy_spwn" x="976" y="288" name="inst_F126D633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_spwn" x="976" y="272" name="inst_F126D633" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_dest" x="48" y="272" name="inst_650EB19D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>

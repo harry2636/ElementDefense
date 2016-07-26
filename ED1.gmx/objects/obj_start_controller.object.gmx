@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,9 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Timer init
-time = 0;
-count = 0;
+            <string>///Create Code
+
+global.leaderboard_previous = room;
+global.score_shared = 0;
+selected = 1;
 </string>
           </argument>
         </arguments>
@@ -44,32 +46,48 @@ count = 0;
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (time &gt; 0){
-  count = (count+1) % 90;
-  if (count == 0){
-    time -= 1;
-  }
-  draw_set_font(font_emulogic15);
-  draw_set_color(c_white);
-  draw_set_halign(fa_center);
-  if (room == room_dungeon){
-    draw_text_transformed(1536, 1580, "Press [K] to skip", 0.5, 0.5, 0);
-  }
-  draw_set_font(font_emulogic15);
-  draw_set_color(c_yellow);
-  draw_text_transformed(1416, 1610, "Time Remaining : ", 0.6, 0.6, 0);
-  if (time &lt; 6)
-    draw_set_color(c_red);
-  else
-    draw_set_color(c_white);
-  draw_text(1536, 1608, string(time));
+            <string>if (keyboard_check_pressed(vk_up)){
+  //selected = (selected - 1)
+  selected = abs((selected +1) % 2);
 }
+if (keyboard_check_pressed(vk_down)){
+  selected = abs((selected+1) % 2);
+}
+if (keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter)){
+  switch(selected){
+    case 0:
+      //LEADERBOARD
+      global.leaderboard_previous = room;
+      room_goto(room_leaderboard);
+      break;
+    case 1:
+      //GAME START
+      room_goto(room_world);
+      break;
+  }
+}
+
+
+draw_sprite(spr_title, 0, room_width div 2, room_height div 2);
+
+draw_set_color(c_white);
+draw_set_font(font_emulogic);
+draw_set_valign(fa_middle);
+draw_set_halign(fa_center);
+
+draw_set_font(font_emulogic20);
+draw_text(room_width div 2, 538, "GAME START ");
+draw_text(room_width div 2, 598, "LEADERBOARD");
+
+draw_text(room_width div 2, 598 - (selected*60), "&gt;&gt;               ");
+
+
 </string>
           </argument>
         </arguments>

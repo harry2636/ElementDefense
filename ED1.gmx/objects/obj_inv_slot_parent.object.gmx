@@ -83,10 +83,11 @@ switch(slot_number) {
         slot_text = global.tower_wall;
         break;
 }
+draw_set_font(font_emulogic9);
 draw_set_color(c_white)
 draw_set_halign(fa_center);
 if (slot_number &lt; 8 || slot_number == 12)
-    draw_text(x, y + 16, string(slot_text));
+    draw_text(x, y + 24, string(slot_text));
     
 // combine slot image
 if slot_number &gt; 7 &amp;&amp; slot_number &lt; 11 &amp;&amp; global.mat_selected[slot_number - 8] != 0 {

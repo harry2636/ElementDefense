@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>max_hp = 0.0
 current_hp = 0.0
+nexus = 0;
+color = c_red;
 </string>
           </argument>
         </arguments>
@@ -49,8 +51,24 @@ current_hp = 0.0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_sprite_ext(spr_hp_gage,0,x-round(13-((current_hp/max_hp)*13)),y,current_hp / max_hp, 1.0, 0, c_white, 180)
+            <string>if (nexus == 0){
+  draw_self();
+  draw_sprite_ext(spr_hp_gage,0,x-round(13-((current_hp/max_hp)*13)),y,current_hp / max_hp, 1.0, 0, c_white, 180);
+}
+else{
+  show_debug_message("Drawing HP Gage... Nexus is true");
+  draw_sprite_ext(spr_hp_container, 0, x,y, 2, 1, 0, c_white, 180);
+  if ((current_hp/max_hp) &gt; 2/3){
+    color = c_green;
+  }
+  else if ((current_hp/max_hp) &gt; 1/3){
+    color = c_orange;
+  }
+  else{
+    color = c_red;
+  }
+  draw_sprite_ext(spr_hp_gage_white,0,x-round(26-((current_hp/max_hp)*26)),y, 2*(current_hp/max_hp), 1, 0, color, 180);
+}
 </string>
           </argument>
         </arguments>

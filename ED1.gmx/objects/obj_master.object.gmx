@@ -91,69 +91,61 @@ for (i = 0; i &lt; 200; i++)
 
 
 
+//Top scores
 
 
 //Stage info
 stage_num_enemies[0] = 10;
-stage_num_enemies[1] = 11;
-stage_num_enemies[2] = 12;
-stage_num_enemies[3] = 13;
-stage_num_enemies[4] = 14;
-stage_num_enemies[5] = 15;
-stage_num_enemies[6] = 16;
-stage_num_enemies[7] = 17;
-stage_num_enemies[8] = 18;
-stage_num_enemies[9] = 19;
-stage_num_enemies[10] = 20;
-stage_num_enemies[11] = 21;
-stage_num_enemies[12] = 22;
-stage_num_enemies[13] = 23;
-stage_num_enemies[14] = 24;
-stage_num_enemies[15] = 25;
-stage_num_enemies[16] = 26;
-stage_num_enemies[17] = 27;
-stage_num_enemies[18] = 28;
-stage_num_enemies[19] = 29;
 stage_spd_enemies[0] = 1;
-stage_spd_enemies[1] = 1;
-stage_spd_enemies[2] = 2;
-stage_spd_enemies[3] = 2;
-stage_spd_enemies[4] = 2;
-stage_spd_enemies[5] = 3;
-stage_spd_enemies[6] = 3;
-stage_spd_enemies[7] = 3;
-stage_spd_enemies[8] = 3;
-stage_spd_enemies[9] = 4;
-stage_spd_enemies[10] = 4;
-stage_spd_enemies[11] = 4;
-stage_spd_enemies[12] = 4;
-stage_spd_enemies[13] = 4;
-stage_spd_enemies[14] = 4;
-stage_spd_enemies[15] = 4;
-stage_spd_enemies[16] = 4;
-stage_spd_enemies[17] = 4;
-stage_spd_enemies[18] = 4;
-stage_spd_enemies[19] = 4;
 stage_hp_enemies[0] = 10;
-stage_hp_enemies[1] = 25;
-stage_hp_enemies[2] = 60;
-stage_hp_enemies[3] = 100;
-stage_hp_enemies[4] = 150;
-stage_hp_enemies[5] = 220;
-stage_hp_enemies[6] = 300;
-stage_hp_enemies[7] = 380;
-stage_hp_enemies[8] = 470;
-stage_hp_enemies[9] = 600;
-stage_hp_enemies[10] = 700;
-stage_hp_enemies[11] = 800;
-stage_hp_enemies[12] = 900;
-stage_hp_enemies[13] = 1000;
-stage_hp_enemies[14] = 1100;
-stage_hp_enemies[15] = 1200;
-stage_hp_enemies[16] = 1300;
-stage_hp_enemies[17] = 1400;
-stage_hp_enemies[18] = 1500;
-stage_hp_enemies[19] = 1600;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.level == 9){
+  player_object = obj_player_flying;
+}
+global.num_killed_by_tower = global.num_killed - global.num_suicide_enemies;
+global.tower_wall += global.num_killed_by_tower div 2;
+if (global.tower_wall &gt; 30){
+  global.tower_wall = 30;
+}
+global.level += 1;
+score += 1000;
+stage_num_enemies[global.level-1] = stage_num_enemies[global.level-2] + 1;
+if (global.level &lt; 2){
+  stage_spd_enemies[global.level-1] = 1;
+}  
+else if (global.level &lt;5){
+  stage_spd_enemies[global.level-1] = 2;
+}
+else if (global.level &lt;9){
+  stage_spd_enemies[global.level-1] = 3;
+}
+else{
+  stage_spd_enemies[global.level-1] = 4;
+}
+stage_hp_enemies[global.level-1] = (global.level-2)*10*((global.level div 10) + 1) + stage_hp_enemies[global.level-2];
+room_goto(room_world);
+state = "mine";
 </string>
           </argument>
         </arguments>
@@ -177,7 +169,6 @@ stage_hp_enemies[19] = 1600;
           <argument>
             <kind>1</kind>
             <string>///Preparing Time Over
-show_debug_message("Preparing Time Up!");
 if(instance_exists(obj_timer)){
   with(obj_timer){
     instance_destroy();
@@ -219,13 +210,13 @@ with(obj_enemy_spwn){
           <argument>
             <kind>1</kind>
             <string>///Mining Time Over
-show_debug_message("Mining Time Up!");
+//show_debug_message("Mining Time Up!");
 if(instance_exists(obj_timer)){
   with(obj_timer){
     instance_destroy();
   }
 }
-room_goto(room_next(room_world));
+room_goto(room_dungeon);
 if(is_first == 1){
   state = "instruction2";
   is_first = 0;
@@ -263,15 +254,15 @@ switch(state){
     if (!instance_exists(player_object)){
       randomize();
       do{
-        player_pos_x = (random(room_width) div 32) * 32 + 16;
-        player_pos_y = (random(1536) div 32) * 32 + 16;
+        player_pos_x = (random_range(600, 1440) div 32) * 32 + 16;
+        player_pos_y = (random_range(400 , 1100) div 32) * 32 + 16;
       } until (not position_meeting(player_pos_x,player_pos_y, obj_collide_parent))
       instance_create(player_pos_x, player_pos_y, player_object);
-      show_debug_message("player pos x: " + string(player_pos_x) + "player pos y: " + string(player_pos_y));
-      show_debug_message("player object created");
+      //show_debug_message("player pos x: " + string(player_pos_x) + "player pos y: " + string(player_pos_y));
+      //show_debug_message("player object created");
     }
     if (!instance_exists(obj_msg_instruction1)){
-      instance_create(player_object.phy_position_x,player_object.phy_position_y, obj_msg_instruction1);
+      instance_create(player_object.phy_position_x, player_object.phy_position_y, obj_msg_instruction1);
       //instance_create(300, 480, obj_msg_instruction1);
     }
     if (keyboard_check_pressed(vk_enter)){
@@ -287,14 +278,14 @@ switch(state){
     if (!instance_exists(player_object)){
       randomize();
       do{
-        player_pos_x = (random(room_width) div 32) * 32 + 16;
-        player_pos_y = (random(1536) div 32) * 32 + 16;
+        player_pos_x = (random_range(600, 1440) div 32) * 32 + 16;
+        player_pos_y = (random_range(400 , 1100) div 32) * 32 + 16;
       } until (not position_meeting(player_pos_x,player_pos_y, obj_collide_parent))
       instance_create(player_pos_x, player_pos_y, player_object);
     }
     if (alarm[0] == -1){
       alarm[0] = room_speed*mine_time;
-      timer = instance_create(room_width div 2, 32, obj_timer);
+      timer = instance_create(1536, 1600, obj_timer);
       timer.time = mine_time;
     }
     break;
@@ -303,7 +294,7 @@ switch(state){
       instance_create(480, 256, player_object);
     }
     if (!instance_exists(obj_msg_instruction2)){
-      instance_create(player_object.phy_position_x,player_object.phy_position_y, obj_msg_instruction2);
+      instance_create(player_object.phy_position_x, player_object.phy_position_y, obj_msg_instruction2);
     }
     if (keyboard_check_pressed(vk_enter)){
       if (instance_exists(obj_msg_instruction2)){
@@ -320,7 +311,7 @@ switch(state){
     }
     if (alarm[1] == -1){
       alarm[1] = room_speed*prepare_time;
-      timer = instance_create(room_width div 2, 32, obj_timer);
+      timer = instance_create(1536, 1600, obj_timer);
       timer.time = prepare_time;
     }
     if (keyboard_check_pressed(ord('K'))){
@@ -328,19 +319,10 @@ switch(state){
     }
     break;
   case "defend":
-    if (global.num_killed &gt;= global.num_enemies){
-      if (global.level == 9){
-        player_object = obj_player_flying;
+    if(global.num_killed &gt;= global.num_enemies){
+      if (alarm[2] == -1){
+        alarm[2] = room_speed * 3;
       }
-      if (global.level = 20){
-        show_message("You WON!");
-        game_restart();
-      }
-      global.num_killed_by_tower = global.num_killed - global.num_suicide_enemies;
-      global.tower_wall += global.num_killed_by_tower;
-      global.level += 1;
-      room_goto(room_world);
-      state = "mine";
     }
     break;
 }

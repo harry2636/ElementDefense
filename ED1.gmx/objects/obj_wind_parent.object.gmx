@@ -111,20 +111,20 @@ switch(lvl){
     proj_spd = 5;
     break;
   case 4:
-    dmg = 55;
+    dmg = 60;
     atk_spd = 15;
     proj_spd = 5;
     break;
   case 5:
-    dmg = 70;
+    dmg = 80;
     atk_spd = 15;
     proj_spd = 5;
     break;
   case 6:
-    dmg = 85;
-    atk_spd = -10;
+    dmg = 100;
+    atk_spd = -15;
     proj_spd = 7;
-    atk_range = 48
+    atk_range = 80
     break;
 }
 current_hp = max_hp;
