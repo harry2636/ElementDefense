@@ -300,6 +300,8 @@ switch(state){
     if (!instance_exists(player_object)){
       instance_create(480, 256, player_object);
     }
+    
+    //create instruction2
     if (!instance_exists(obj_msg_instruction2)){
       instance_create(player_object.phy_position_x, player_object.phy_position_y, obj_msg_instruction2);
     }
@@ -309,6 +311,7 @@ switch(state){
           instance_destroy();
         }
       }
+  
       state = "prepare";
     }
     break;

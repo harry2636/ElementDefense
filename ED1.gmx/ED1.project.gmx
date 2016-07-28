@@ -108,7 +108,6 @@
       <sprite>sprites\spr_msg_instruction1</sprite>
       <sprite>sprites\spr_msg_instruction2</sprite>
       <sprite>sprites\spr_title</sprite>
-      <sprite>sprites\sprite146</sprite>
     </sprites>
     <sprites name="Effects">
       <sprite>sprites\spr_effect_thunder1</sprite>
@@ -298,6 +297,7 @@
     <objects name="Messages">
       <object>objects\obj_msg_instruction1</object>
       <object>objects\obj_msg_instruction2</object>
+      <object>objects\obj_msg_instruction3</object>
       <object>objects\obj_timer</object>
       <object>objects\obj_topbar</object>
       <object>objects\obj_end_controller</object>
