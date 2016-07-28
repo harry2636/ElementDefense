@@ -28,7 +28,7 @@
             <string>///Spwn init
 spwned = 0;
 spwn_number = 0;
-spwn_enemy = obj_enemy_parent;
+spwn_enemy = obj_boss1;
 </string>
           </argument>
         </arguments>
@@ -51,7 +51,8 @@ spwn_enemy = obj_enemy_parent;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x, y, spwn_enemy);
+            <string>//instance_create(x, y, spwn_enemy);
+instance_create(x, y, spwn_enemy);
 </string>
           </argument>
         </arguments>

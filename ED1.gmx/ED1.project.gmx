@@ -108,6 +108,7 @@
       <sprite>sprites\spr_msg_instruction1</sprite>
       <sprite>sprites\spr_msg_instruction2</sprite>
       <sprite>sprites\spr_title</sprite>
+      <sprite>sprites\sprite146</sprite>
     </sprites>
     <sprites name="Effects">
       <sprite>sprites\spr_effect_thunder1</sprite>
@@ -123,6 +124,94 @@
     </sprites>
     <sprite>sprites\spr_wall</sprite>
     <sprite>sprites\spr_combine_effect</sprite>
+    <sprites name="Boss">
+      <sprites name="boss1">
+        <sprite>sprites\spr_boss1_front</sprite>
+        <sprite>sprites\spr_boss1_left</sprite>
+        <sprite>sprites\spr_boss1_right</sprite>
+        <sprite>sprites\spr_boss1_back</sprite>
+      </sprites>
+      <sprites name="boss2">
+        <sprite>sprites\spr_boss2_front</sprite>
+        <sprite>sprites\spr_boss2_left</sprite>
+        <sprite>sprites\spr_boss2_right</sprite>
+        <sprite>sprites\spr_boss2_back</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Enemy">
+      <sprites name="enemy1">
+        <sprite>sprites\spr_enemy1_front</sprite>
+        <sprite>sprites\spr_enemy1_left</sprite>
+        <sprite>sprites\spr_enemy1_right</sprite>
+        <sprite>sprites\spr_enemy1_back</sprite>
+      </sprites>
+      <sprites name="enemy2">
+        <sprite>sprites\spr_enemy2_front</sprite>
+        <sprite>sprites\spr_enemy2_left</sprite>
+        <sprite>sprites\spr_enemy2_right</sprite>
+        <sprite>sprites\spr_enemy2_back</sprite>
+      </sprites>
+      <sprites name="enemy3">
+        <sprite>sprites\spr_enemy3_front</sprite>
+        <sprite>sprites\spr_enemy3_left</sprite>
+        <sprite>sprites\spr_enemy3_right</sprite>
+        <sprite>sprites\spr_enemy3_back</sprite>
+      </sprites>
+      <sprites name="enemy4">
+        <sprite>sprites\spr_enemy4_front</sprite>
+        <sprite>sprites\spr_enemy4_left</sprite>
+        <sprite>sprites\spr_enemy4_right</sprite>
+        <sprite>sprites\spr_enemy4_back</sprite>
+      </sprites>
+      <sprites name="enemy5">
+        <sprite>sprites\spr_enemy5_front</sprite>
+        <sprite>sprites\spr_enemy5_left</sprite>
+        <sprite>sprites\spr_enemy5_right</sprite>
+        <sprite>sprites\spr_enemy5_back</sprite>
+      </sprites>
+      <sprites name="enemy6">
+        <sprite>sprites\spr_enemy6_front</sprite>
+        <sprite>sprites\spr_enemy6_left</sprite>
+        <sprite>sprites\spr_enemy6_right</sprite>
+        <sprite>sprites\spr_enemy6_back</sprite>
+      </sprites>
+      <sprites name="enemy7">
+        <sprite>sprites\spr_enemy7_front</sprite>
+        <sprite>sprites\spr_enemy7_left</sprite>
+        <sprite>sprites\spr_enemy7_right</sprite>
+        <sprite>sprites\spr_enemy7_back</sprite>
+      </sprites>
+      <sprites name="enemy8">
+        <sprite>sprites\spr_enemy8_front</sprite>
+        <sprite>sprites\spr_enemy8_left</sprite>
+        <sprite>sprites\spr_enemy8_right</sprite>
+        <sprite>sprites\spr_enemy8_back</sprite>
+      </sprites>
+      <sprites name="enemy9">
+        <sprite>sprites\spr_enemy9_front</sprite>
+        <sprite>sprites\spr_enemy9_left</sprite>
+        <sprite>sprites\spr_enemy9_right</sprite>
+        <sprite>sprites\spr_enemy9_back</sprite>
+      </sprites>
+      <sprites name="enemy10">
+        <sprite>sprites\spr_enemy10_front</sprite>
+        <sprite>sprites\spr_enemy10_left</sprite>
+        <sprite>sprites\spr_enemy10_right</sprite>
+        <sprite>sprites\spr_enemy10_back</sprite>
+      </sprites>
+      <sprites name="enemy11">
+        <sprite>sprites\spr_enemy11_front</sprite>
+        <sprite>sprites\spr_enemy11_left</sprite>
+        <sprite>sprites\spr_enemy11_right</sprite>
+        <sprite>sprites\spr_enemy11_back</sprite>
+      </sprites>
+      <sprites name="enemy12">
+        <sprite>sprites\spr_enemy12_front</sprite>
+        <sprite>sprites\spr_enemy12_left</sprite>
+        <sprite>sprites\spr_enemy12_right</sprite>
+        <sprite>sprites\spr_enmey12_back</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -196,7 +285,9 @@
       <object>objects\obj_tower_wall</object>
     </objects>
     <object>objects\obj_follow_target</object>
+    <object>objects\obj_follow_target_boss</object>
     <object>objects\obj_enemy_parent</object>
+    <object>objects\obj_boss1</object>
     <objects name="Bullets">
       <object>objects\obj_bullet_parent</object>
       <object>objects\obj_bullet_fire</object>

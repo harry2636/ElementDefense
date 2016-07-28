@@ -56,11 +56,11 @@ global.mat_wind = 0;
 global.mat_thunder = 0;
 global.mat_ice = 0;
 
-global.tower_fire = 0;
-global.tower_wind = 0;
-global.tower_thunder = 0;
-global.tower_ice = 0;
-global.tower_wall = 0;
+global.tower_fire = 1000;
+global.tower_wind = 1000;
+global.tower_thunder = 1000;
+global.tower_ice = 1000;
+global.tower_wall = 1000;
 
 for (i = 0; i &lt; 200; i++) 
 {
@@ -182,8 +182,15 @@ global.enemy_hp = stage_hp_enemies[global.level-1];
 global.enemy_spd = stage_spd_enemies[global.level-1];
 state = "defend";
 with(obj_enemy_spwn){
-  spwn_number = global.num_enemies;
-  spwn_enemy = obj_enemy_parent;
+
+  if(global.level==1){
+    spwn_number = 1;
+    spwn_enemy = obj_boss1;
+  }
+  else{
+      spwn_number = global.num_enemies;
+      spwn_enemy=obj_enemy_parent;
+  }
   spwned = 0;
 }
 //spawn monsters

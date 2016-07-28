@@ -2,7 +2,7 @@
 <object>
   <spriteName>spr_mine_area</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -37,6 +37,7 @@ goal_y = obj_enemy_dest.y;
 atk_mode = 0;
 approaching = 0;
 target_tower = -1;
+boss = 0;
 </string>
           </argument>
         </arguments>
