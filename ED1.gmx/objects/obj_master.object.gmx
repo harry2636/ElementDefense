@@ -366,7 +366,16 @@ switch(state){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>inventory_x = 0
+            <string>if(room==1){
+    audio_pause_all();
+    audio_play_sound(sound0, 10, true);
+}
+else if(room ==2){
+    audio_pause_all();
+    audio_play_sound(sound1, 10, true);
+}
+
+inventory_x = 0
 inventory_y = 1568
 topbar_x = 2048
 topbar_y = 1568

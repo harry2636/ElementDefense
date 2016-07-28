@@ -15,6 +15,23 @@ if(!instance_exists(obj_msg_instruction1) && !instance_exists(obj_msg_instructio
     q_key = keyboard_check_pressed(ord("Q"));
     w_key = keyboard_check_pressed(ord("W"));
 }
+else{
+    right_key = false
+    left_key = false
+    up_key = false
+    down_key = false
+    no_key = true;
+    
+    ru_key = false
+    rd_key = false
+    lu_key = false
+    ld_key = false
+    
+    space_key = false
+    q_key = false
+    w_key = false
+}
+
 
 //key1= keyboard_check(ord("1"));
 //key2= keyboard_check(ord("2"));
