@@ -40,89 +40,24 @@ target_tower = -1;
 
 
 //for movement
-rand = irandom_range(1,12);
-
-switch(rand) {
-    case 1:
-        enemy_sprite_front = spr_enemy1_front;
-        enemy_sprite_back = spr_enemy1_back;
-        enemy_sprite_left = spr_enemy1_left;
-        enemy_sprite_right = spr_enemy1_right;
-        break;
-    case 2:
-        enemy_sprite_front = spr_enemy2_front;
-        enemy_sprite_back = spr_enemy2_back;
-        enemy_sprite_left = spr_enemy2_left;
-        enemy_sprite_right = spr_enemy2_right;
-        break;
-    case 3:
-        enemy_sprite_front = spr_enemy3_front;
-        enemy_sprite_back = spr_enemy3_back;
-        enemy_sprite_left = spr_enemy3_left;
-        enemy_sprite_right = spr_enemy3_right;
-        break;
-    case 4:
-        enemy_sprite_front = spr_enemy4_front;
-        enemy_sprite_back = spr_enemy4_back;
-        enemy_sprite_left = spr_enemy4_left;
-        enemy_sprite_right = spr_enemy4_right;
-        break;
-    case 5:
-        enemy_sprite_front = spr_enemy5_front;
-        enemy_sprite_back = spr_enemy5_back;
-        enemy_sprite_left = spr_enemy5_left;
-        enemy_sprite_right = spr_enemy5_right;
-        break;
-    case 6:
-        enemy_sprite_front = spr_enemy6_front;
-        enemy_sprite_back = spr_enemy6_back;
-        enemy_sprite_left = spr_enemy6_left;
-        enemy_sprite_right = spr_enemy6_right;
-        break;
-    case 7:
-        enemy_sprite_front = spr_enemy7_front;
-        enemy_sprite_back = spr_enemy7_back;
-        enemy_sprite_left = spr_enemy7_left;
-        enemy_sprite_right = spr_enemy7_right;
-        break;
-    case 8:
-        enemy_sprite_front = spr_enemy8_front;
-        enemy_sprite_back = spr_enemy8_back;
-        enemy_sprite_left = spr_enemy8_left;
-        enemy_sprite_right = spr_enemy8_right;
-        break;
-    case 9:
-        enemy_sprite_front = spr_enemy9_front;
-        enemy_sprite_back = spr_enemy9_back;
-        enemy_sprite_left = spr_enemy9_left;
-        enemy_sprite_right = spr_enemy9_right;
-        break;
-    case 10:
-        enemy_sprite_front = spr_enemy10_front;
-        enemy_sprite_back = spr_enemy10_back;
-        enemy_sprite_left = spr_enemy10_left;
-        enemy_sprite_right = spr_enemy10_right;
-        break;
-    case 11:
-        enemy_sprite_front = spr_enemy11_front;
-        enemy_sprite_back = spr_enemy11_back;
-        enemy_sprite_left = spr_enemy11_left;
-        enemy_sprite_right = spr_enemy11_right;
-        break;
-    case 12:
-        enemy_sprite_front = spr_enemy12_front;
-        enemy_sprite_back = spr_enemy12_back;
-        enemy_sprite_left = spr_enemy12_left;
-        enemy_sprite_right = spr_enemy12_right;
-        break;
-}
+enemy_sprite_front = spr_player_front;
+enemy_sprite_back = spr_player_back;
+enemy_sprite_left = spr_player_left;
+enemy_sprite_right = spr_player_right;
 
 udlr_dir = 0; //direction: up,down,left,right
 dir = 0;
 phy_angular_velocity = 0;
 angle_to_rotate = 0;
 facing_direction = -90;
-my_target = instance_create(x, y, obj_follow_target);
+with(obj_enemy_spwn){
+    if(type==0){
+        my_target = instance_create(x, y, obj_follow_target);
+    }
+    else{
+        my_target =instance_create(x, y, obj_follow_target_boss);
+    }
+}
 my_target.moving_speed = spd;
 move_speed = 0;
 slow_factor = 1;

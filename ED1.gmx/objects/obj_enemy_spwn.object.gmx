@@ -29,6 +29,7 @@
 spwned = 0;
 spwn_number = 0;
 spwn_enemy = obj_enemy_parent;
+type = 0;
 </string>
           </argument>
         </arguments>

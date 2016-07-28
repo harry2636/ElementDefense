@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sound0</sound>
+    <sound>sound\sound1</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Player">
       <sprite>sprites\spr_player_front</sprite>
@@ -208,7 +211,7 @@
         <sprite>sprites\spr_enemy12_front</sprite>
         <sprite>sprites\spr_enemy12_left</sprite>
         <sprite>sprites\spr_enemy12_right</sprite>
-        <sprite>sprites\spr_enemy12_back</sprite>
+        <sprite>sprites\spr_enmey12_back</sprite>
       </sprites>
     </sprites>
   </sprites>

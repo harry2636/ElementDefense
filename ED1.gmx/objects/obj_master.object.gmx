@@ -189,10 +189,14 @@ state = "defend";
 with(obj_enemy_spwn){
 
   if(global.level==10 || global.level ==20){
-        spwn_enemy = obj_boss1;
-  }
+        spwn_enemy = obj_enemy_parent;
+        //type boss
+        spwn_enemy.type = 1;
+        }
   else{
         spwn_enemy=obj_enemy_parent;
+        //type normal
+        spwn_enemy.type = 0;
   }
   spwn_number = global.num_enemies;
   spwned = 0;
@@ -340,85 +344,6 @@ switch(state){
     }
     break;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>inventory_x = 0
-inventory_y = 1568
-topbar_x = 2048
-topbar_y = 1568
-
-/// Inventory Slots
-// Materials
-inst = instance_create(32 * 4 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_mat_fire
-inst.slot_number = 0
-inst = instance_create(32 * 6 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_mat_wind
-inst.slot_number = 1
-inst = instance_create(32 * 8 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_mat_thunder
-inst.slot_number = 2
-inst = instance_create(32 * 10 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_mat_ice
-inst.slot_number = 3
-
-
-// Towers
-inst = instance_create(32 * 22 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_fire6
-inst.slot_number = 4
-inst = instance_create(32 * 24 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_wind6
-inst.slot_number = 5
-inst = instance_create(32 * 26 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_thunder6
-inst.slot_number = 6
-inst = instance_create(32 * 28 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_ice6
-inst.slot_number = 7
-inst = instance_create(32 * 30 , inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_tower_wall;
-inst.slot_number = 12
-
-
-// Center
-inst = instance_create(32 * 16, inventory_y + 64, obj_inv_slot_parent);
-inst.sprite_index = spr_inv_center
-inst.xscale = 0.6
-inst.yscale = 0.6
-inst.depth = 1
-inst.slot_number = 11
-inst = instance_create(32 * 16, inventory_y + 32, obj_inv_slot_parent);
-inst.sprite_index = spr_inv_side
-inst.slot_number = 8
-inst = instance_create(32 * 17 + 19, inventory_y + 96, obj_inv_slot_parent);
-inst.sprite_index = spr_inv_side
-inst.slot_number = 10
-inst = instance_create(32 * 15 - 19, inventory_y + 96, obj_inv_slot_parent);
-inst.sprite_index = spr_inv_side
-inst.slot_number = 9
-
-instance_create(0, 0, obj_topbar)
 </string>
           </argument>
         </arguments>
