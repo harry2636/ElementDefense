@@ -28,7 +28,7 @@
             <string>///Spwn init
 spwned = 0;
 spwn_number = 0;
-spwn_enemy = obj_boss1;
+spwn_enemy = obj_enemy_parent;
 </string>
           </argument>
         </arguments>

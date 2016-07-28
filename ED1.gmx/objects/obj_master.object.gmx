@@ -177,20 +177,24 @@ if(instance_exists(obj_timer)){
 global.num_suicide_enemies = 0;
 global.num_killed_by_tower = 0;
 global.num_killed = 0;
-global.num_enemies = stage_num_enemies[global.level-1];
+if (global.level==10 || global.level ==20){
+    global.num_enemies = 1;
+}
+else{
+    global.num_enemies = stage_num_enemies[global.level-1];
+}
 global.enemy_hp = stage_hp_enemies[global.level-1];
 global.enemy_spd = stage_spd_enemies[global.level-1];
 state = "defend";
 with(obj_enemy_spwn){
 
-  if(global.level==1){
-    spwn_number = 1;
-    spwn_enemy = obj_boss1;
+  if(global.level==10 || global.level ==20){
+        spwn_enemy = obj_boss1;
   }
   else{
-      spwn_number = global.num_enemies;
-      spwn_enemy=obj_enemy_parent;
+        spwn_enemy=obj_enemy_parent;
   }
+  spwn_number = global.num_enemies;
   spwned = 0;
 }
 //spawn monsters
