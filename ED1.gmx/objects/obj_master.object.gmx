@@ -120,7 +120,7 @@ stage_hp_enemies[0] = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.level == 9){
+            <string>if (global.level == 10){
   player_object = obj_player_flying;
 }
 global.num_killed_by_tower = global.num_killed - global.num_suicide_enemies;
@@ -130,7 +130,12 @@ if (global.tower_wall &gt; 30){
 }
 global.level += 1;
 score += 1000;
-stage_num_enemies[global.level-1] = stage_num_enemies[global.level-2] + 1;
+if(global.level %10 ==0){
+    stage_num_enemies[global.level-1] = 1;
+}
+else{
+    stage_num_enemies[global.level-1] = stage_num_enemies[global.level-2] + 1;
+}
 if (global.level &lt; 2){
   stage_spd_enemies[global.level-1] = 1;
 }  
@@ -143,7 +148,12 @@ else if (global.level &lt;9){
 else{
   stage_spd_enemies[global.level-1] = 4;
 }
-stage_hp_enemies[global.level-1] = (global.level-2)*10*((global.level div 10) + 1) + stage_hp_enemies[global.level-2];
+if(global.level %10 ==0){
+    stage_hp_enemies[global.level-1] = global.level*global.level*100;
+}
+else{
+    stage_hp_enemies[global.level-1] = (global.level-2)*10*((global.level div 10) + 1) + stage_hp_enemies[global.level-2];
+}
 room_goto(room_world);
 state = "mine";
 </string>
@@ -177,12 +187,9 @@ if(instance_exists(obj_timer)){
 global.num_suicide_enemies = 0;
 global.num_killed_by_tower = 0;
 global.num_killed = 0;
-if (global.level==10 || global.level ==20){
-    global.num_enemies = 1;
-}
-else{
-    global.num_enemies = stage_num_enemies[global.level-1];
-}
+
+global.num_enemies = stage_num_enemies[global.level-1];
+
 global.enemy_hp = stage_hp_enemies[global.level-1];
 global.enemy_spd = stage_spd_enemies[global.level-1];
 state = "defend";

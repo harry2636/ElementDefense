@@ -122,9 +122,14 @@ phy_angular_velocity = 0;
 angle_to_rotate = 0;
 facing_direction = -90;
 
-if global.level == 10 || global.level == 20 {
-    type = 1
+if global.level % 10 == 0 {
+    type = 1;
     my_target = instance_create(x, y, obj_follow_target_boss);
+    
+    enemy_sprite_front = spr_boss2_front;
+    enemy_sprite_back = spr_boss2_back;
+    enemy_sprite_left = spr_boss2_left;
+    enemy_sprite_right = spr_boss2_right;
 }
 else {
     type = 0
