@@ -125,14 +125,21 @@ facing_direction = -90;
 if global.level % 10 == 0 {
     type = 1;
     my_target = instance_create(x, y, obj_follow_target_boss);
-    
-    enemy_sprite_front = spr_boss2_front;
-    enemy_sprite_back = spr_boss2_back;
-    enemy_sprite_left = spr_boss2_left;
-    enemy_sprite_right = spr_boss2_right;
+    if (global.level ==10){
+        enemy_sprite_front = spr_boss1_front;
+        enemy_sprite_back = spr_boss1_back;
+        enemy_sprite_left = spr_boss1_left;
+        enemy_sprite_right = spr_boss1_right;
+    }
+    else{
+        enemy_sprite_front = spr_boss2_front;
+        enemy_sprite_back = spr_boss2_back;
+        enemy_sprite_left = spr_boss2_left;
+        enemy_sprite_right = spr_boss2_right;
+    }
 }
 else {
-    type = 0
+    type = 0;
     my_target = instance_create(x, y, obj_follow_target);
 }
 
