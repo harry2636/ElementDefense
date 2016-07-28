@@ -122,8 +122,9 @@ phy_angular_velocity = 0;
 angle_to_rotate = 0;
 facing_direction = -90;
 
-if global.level % 10 == 0 {
+if global.level %10 ==0 {
     type = 1;
+    atk_dmg = 300;
     my_target = instance_create(x, y, obj_follow_target_boss);
     if (global.level ==10){
         enemy_sprite_front = spr_boss1_front;
@@ -338,18 +339,30 @@ switch (udlr_dir)
   case 0:
     sprite_index = enemy_sprite_front;
     image_speed = 1;
+    if(type==1){
+        image_speed =0.5;
+    }
     break;
   case 1:
     sprite_index = enemy_sprite_right;
     image_speed = 1;
+    if(type==1){
+        image_speed =0.5;
+    }
     break;
   case 2:
     sprite_index = enemy_sprite_back;
     image_speed = 1;
+    if(type==1){
+        image_speed =0.5;
+    }
     break;
   case 3:
     sprite_index = enemy_sprite_left;
     image_speed = 1;
+    if(type==1){
+        image_speed =0.5;
+    }
     break;
   case 4:
     image_speed = 0;
