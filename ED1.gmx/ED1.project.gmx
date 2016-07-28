@@ -211,7 +211,7 @@
         <sprite>sprites\spr_enemy12_front</sprite>
         <sprite>sprites\spr_enemy12_left</sprite>
         <sprite>sprites\spr_enemy12_right</sprite>
-        <sprite>sprites\spr_enmey12_back</sprite>
+        <sprite>sprites\spr_enemy12_back</sprite>
       </sprites>
     </sprites>
   </sprites>
