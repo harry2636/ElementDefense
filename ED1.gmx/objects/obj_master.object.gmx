@@ -56,11 +56,11 @@ global.mat_wind = 0;
 global.mat_thunder = 0;
 global.mat_ice = 0;
 
-global.tower_fire = 1000;
-global.tower_wind = 1000;
-global.tower_thunder = 1000;
-global.tower_ice = 1000;
-global.tower_wall = 1000;
+global.tower_fire = 0;
+global.tower_wind = 0;
+global.tower_thunder = 0;
+global.tower_ice = 0;
+global.tower_wall = 0;
 
 for (i = 0; i &lt; 200; i++) 
 {
