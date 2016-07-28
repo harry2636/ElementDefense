@@ -97,6 +97,9 @@ for (i = 0; i &lt; 200; i++)
 //Stage info
 stage_num_enemies[0] = 10;
 stage_spd_enemies[0] = 1;
+
+normal_hp_enemies[0]=10;
+boss_hp_enemies[0]=10;
 stage_hp_enemies[0] = 10;
 </string>
           </argument>
@@ -178,29 +181,48 @@ state = "mine";
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Preparing Time Over
-if(instance_exists(obj_timer)){
-  with(obj_timer){
-    instance_destroy();
-  }
+            <string>if (global.level == 10){
+  player_object = obj_player_flying;
 }
-global.num_suicide_enemies = 0;
-global.num_killed_by_tower = 0;
-global.num_killed = 0;
-
-global.num_enemies = stage_num_enemies[global.level-1];
-
-global.enemy_hp = stage_hp_enemies[global.level-1];
-global.enemy_spd = stage_spd_enemies[global.level-1];
-state = "defend";
-with(obj_enemy_spwn){
-
-  spwn_enemy = obj_enemy_parent;
-
-  spwn_number = global.num_enemies;
-  spwned = 0;
+global.num_killed_by_tower = global.num_killed - global.num_suicide_enemies;
+global.tower_wall += global.num_killed_by_tower div 2;
+if (global.tower_wall &gt; 30){
+  global.tower_wall = 30;
 }
-//spawn monsters
+global.level += 1;
+score += 1000;
+if(global.level %10 ==0){
+    stage_num_enemies[global.level-1] = 1;
+}
+else{
+    stage_num_enemies[global.level-1] = stage_num_enemies[global.level-2] + 1;
+}
+if (global.level &lt; 2){
+  stage_spd_enemies[global.level-1] = 1;
+}  
+else if (global.level &lt;5){
+  stage_spd_enemies[global.level-1] = 2;
+}
+else if (global.level &lt;9){
+  stage_spd_enemies[global.level-1] = 3;
+}
+else{
+  stage_spd_enemies[global.level-1] = 4;
+}
+
+boss_hp_enemies[global.level-1] = global.level*global.level*100;
+normal_hp_enemies[global.level-1] = (global.level-2)*10*((global.level div 10) + 1) + stage_hp_enemies[global.level-2];
+
+if(global.level%10==0){
+    stage_hp_enemies[global.level-1] = boss_hp_enemies[global.level-1];
+}
+else{
+    stage_hp_enemies[global.level-1] = normal_hp_enemies[global.level-1];
+}
+
+
+room_goto(room_world);
+state = "mine";
 </string>
           </argument>
         </arguments>

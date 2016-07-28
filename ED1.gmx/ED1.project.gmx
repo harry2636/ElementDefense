@@ -289,7 +289,6 @@
     <object>objects\obj_follow_target</object>
     <object>objects\obj_follow_target_boss</object>
     <object>objects\obj_enemy_parent</object>
-    <object>objects\obj_boss1</object>
     <objects name="Bullets">
       <object>objects\obj_bullet_parent</object>
       <object>objects\obj_bullet_fire</object>
