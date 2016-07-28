@@ -188,16 +188,8 @@ global.enemy_spd = stage_spd_enemies[global.level-1];
 state = "defend";
 with(obj_enemy_spwn){
 
-  if(global.level==10 || global.level ==20){
-        spwn_enemy = obj_enemy_parent;
-        //type boss
-        spwn_enemy.type = 1;
-        }
-  else{
-        spwn_enemy=obj_enemy_parent;
-        //type normal
-        spwn_enemy.type = 0;
-  }
+  spwn_enemy = obj_enemy_parent;
+
   spwn_number = global.num_enemies;
   spwned = 0;
 }
