@@ -129,7 +129,16 @@ stage_hp_enemies[0] = 10;
   player_object = obj_player_flying;
 }
 global.num_killed_by_tower = global.num_killed - global.num_suicide_enemies;
-global.tower_wall += global.num_killed_by_tower div 2;
+if(global.level %10 ==0){
+    global.tower_wall += 10;
+    global.tower_fire += (global.level/10);
+    global.tower_wind += (global.level/10);
+    global.tower_thunder += (global.level/10);
+    global.tower_ice += (global.level/10);
+}
+else{
+    global.tower_wall += global.num_killed_by_tower div 2;
+}
 if (global.tower_wall &gt; 30){
   global.tower_wall = 30;
 }
